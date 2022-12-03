@@ -1,6 +1,9 @@
 ## Before getting started...
+
 ### Copyright
-THIS PROJECT IS MADE BY T.F.A#7524, IF I SEE ANYBODY HAS MADE A VIDEO OR SHARED THIS PROJECT WITHOUT CREDITS TO ME ENDS IN A COPYRIGHT WARNING BY ME.
+THIS PROJECT IS MADE BY T.F.A#7524, IF I SEE ANYBODY HAS MADE A VIDEO OR SHARED THIS PROJECT WITHOUT CREDITS TO ME ENDS IN A COPYRIGHT WARNING BY ME.<br>
+List of the developers are linked in this [file](https://github.com/TFAGaming/Tags-System-Discord-Bot/blob/main/AUTHORS.md).
+
 ### The project
 The project is not 100% finished, some features could be add in the future and bugs may occurs anywhere.
 
