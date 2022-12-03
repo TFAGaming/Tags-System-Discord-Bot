@@ -1,9 +1,9 @@
 const client = require('../index');
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
-const { TagsSystem } = require('../models/main');
+const { TagsSystem, TagsSystemReport } = require('../models/main');
 const { TextFileGenerator } = require('super-djs');
 
-client.on('interactionCreate', (interaction) => {
+client.on('interactionCreate', async (interaction) => {
     if (interaction.isSelectMenu() || interaction.isButton()) {
         const id = interaction.customId.split('_');
 
@@ -79,7 +79,17 @@ client.on('interactionCreate', (interaction) => {
         if (interaction.customId.startsWith('report_')) {
             const splitted = interaction.customId.split('_');
 
-            const channel = interaction.guild.channels.cache.get(require('../config/guild/guild').channels.report);
+            let dataSchemaReport = await TagsSystemReport.findOne({ guild: interaction.guild.id });
+
+            if (!dataSchemaReport) return interaction.reply({
+                embeds: [
+                    new EmbedBuilder()
+                        .setDescription(`The report system is not ready.`)
+                ],
+                ephemeral: true
+            });
+
+            const channel = interaction.guild.channels.cache.get(dataSchemaReport.channel);
 
             if (!channel || channel.type !== 0) return interaction.reply({
                 embeds: [
@@ -138,10 +148,12 @@ client.on('interactionCreate', (interaction) => {
                                     new ButtonBuilder()
                                         .setCustomId('forcedel_' + data._id)
                                         .setLabel('Force delete tag')
+                                        .setEmoji('🗑️')
                                         .setStyle(ButtonStyle.Danger),
                                     new ButtonBuilder()
                                         .setCustomId('delreport_' + data._id)
                                         .setLabel('Delete report')
+                                        .setEmoji('❌')
                                         .setStyle(ButtonStyle.Secondary)
                                 )
                         ],
@@ -204,7 +216,7 @@ client.on('interactionCreate', (interaction) => {
                     return interaction.reply({
                         embeds: [
                             new EmbedBuilder()
-                                .setDescription('The report has been deleted. Users can report the tag again.')
+                                .setDescription('The report has been **deleted**, users can report the tag again.')
                                 .setColor('Green')
                         ],
                         ephemeral: true
