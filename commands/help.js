@@ -25,7 +25,7 @@ module.exports = {
                         },
                         {
                             name: 'Special thanks',
-                            value: '- **FluidNodes:** 24/7 hosting\n- **T.F.A 7524 - Development:** Creating the bot'
+                            value: '- **T.F.A 7524 - Development:** Creating the bot & project'
                         }
                     )
             ],
@@ -36,6 +36,7 @@ module.exports = {
                             .setURL("https://discord.com/oauth2/authorize?client_id=865657643657461760&scope=bot%20applications.commands&permissions=277025770568")
                             .setLabel('Invite me!')
                             .setStyle(ButtonStyle.Link)
+                            .setDisabled(true) // Not public
                     )
             ]
         });
