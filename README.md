@@ -13,5 +13,4 @@ A bot that allows you and your server members to create tags and share them to t
 # Features
 - Report system<br><img src="https://media.discordapp.net/attachments/996343173922168872/1048654110183936111/2022-12-03_18_34_09-Window.png">
 - Starring system (Like GitHub)<br><img src="https://media.discordapp.net/attachments/996343173922168872/1048654110553022524/2022-12-03_18_34_23-Window.png">
-- Detailed informations<br><img src="https://media.discordapp.net/attachments/996343173922168872/1048654110985048174/2022-12-03_18_36_00-Window.png">
-<img src="https://media.discordapp.net/attachments/996343173922168872/1048654111291220070/2022-12-03_18_36_15-Window.png">
+- Detailed informations<br><img src="https://media.discordapp.net/attachments/996343173922168872/1048654110985048174/2022-12-03_18_36_00-Window.png"><img src="https://media.discordapp.net/attachments/996343173922168872/1048654111291220070/2022-12-03_18_36_15-Window.png">
