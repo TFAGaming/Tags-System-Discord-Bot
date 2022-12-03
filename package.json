@@ -1,0 +1,21 @@
+{
+  "name": "tag-system-bot-v2",
+  "version": "2.0.0-alpha-1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.7.1",
+    "fs": "^0.0.1-security",
+    "mathjs": "^11.4.0",
+    "mongoose": "^6.7.3",
+    "node-fetch": "^2.6.7",
+    "os": "^0.1.2",
+    "super-djs": "^1.7.4"
+  }
+}
