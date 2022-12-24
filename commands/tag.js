@@ -1,6 +1,6 @@
 const { EmbedBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder, ButtonBuilder, ButtonStyle, ComponentType, codeBlock } = require('discord.js');
 const { TextFileGenerator } = require('super-djs');
-const { TagsSystem, TagsSystemData } = require('../models/main');
+const { TagsSystem } = require('../models/main');
 
 module.exports = {
     name: 'tag',
@@ -64,6 +64,18 @@ module.exports = {
                     ]
                 }
             ]
+        },
+        {
+            name: 'leaderboard',
+            description: 'Show the top starred tags.',
+            type: 1,
+            options: []
+        },
+        {
+            name: 'force-del-all',
+            description: 'Delete all the available tags.',
+            type: 1,
+            options: []
         }
     ],
     run: async (client, interaction) => {
@@ -445,6 +457,92 @@ module.exports = {
                         embeds: [
                             new EmbedBuilder()
                                 .setDescription('Invalid tag.')
+                        ],
+                        ephemeral: true
+                    });
+                };
+            });
+        };
+
+        if (subcommand === 'leaderboard') {
+            TagsSystem.find({
+                guild: interaction.guild.id
+            }, async (err, data) => {
+                if (err) throw err;
+
+                if (data && data?.length > 0) {
+                    const sorted = data.sort((a, b) => b.stars.length - a.stars.length)
+                        .slice(0, 10)
+                        .map((w, i) => {
+                            return `\`#${i + 1}\`: ${w.name} (**${w.stars.length || '0'}** ⭐)`
+                        });
+
+                    return interaction.reply({
+                        embeds: [
+                            new EmbedBuilder()
+                                .setAuthor({
+                                    name: client.user.username,
+                                    iconURL: client.user.displayAvatarURL({ dynamic: true })
+                                })
+                                .setTitle('Top 10 starred tags')
+                                .setDescription(sorted.join('\n'))
+                                .setColor('Gold')
+                        ]
+                    })
+                } else {
+                    return interaction.reply({
+                        embeds: [
+                            new EmbedBuilder()
+                                .setDescription('No tags were created in this guild.')
+                        ],
+                        ephemeral: true
+                    });
+                };
+            });
+        };
+
+        if (subcommand === 'force-del-all') {
+            if (interaction.guild.ownerId !== interaction.user.id) return interaction.reply({
+                embeds: [
+                    new EmbedBuilder()
+                        .setDescription('You are not the guild owner.')
+                ],
+                ephemeral: true
+            });
+
+            TagsSystem.find({
+                guild: interaction.guild.id
+            }, async (err, data) => {
+                if (err) throw err;
+
+                if (data && data?.length > 0) {
+                    await interaction.reply({
+                        embeds: [
+                            new EmbedBuilder()
+                                .setDescription('Started deleting...')
+                                .setColor('Red')
+                        ]
+                    });
+
+                    await data.forEach(async (inData) => {
+                        await TagsSystem.deleteOne({
+                            guild: interaction.guild.id,
+                            name: inData.name
+                        });
+                    });
+
+                    return interaction.editReply({
+                        embeds: [
+                            new EmbedBuilder()
+                                .setDescription('Successfully deleted all the tags.')
+                                .setColor('Green')
+                        ]
+                    });
+                } else {
+                    return interaction.reply({
+                        embeds: [
+                            new EmbedBuilder()
+                                .setDescription('No tags were created in this guild.')
                         ],
                         ephemeral: true
                     });
