@@ -4,6 +4,8 @@
 Everyone must understand that this project is owned by me (T.F.A#7524), and if I see anybody making a YouTube video about this project without linking this GitHub repository in the description, their video will be taken down by me. Learn [YouTube copyright](https://www.youtube.com/howyoutubeworks/policies/copyright/) and do not steal anybody's projects. Thank you for reading this.<br>
 List of the developers are linked in this [file](https://github.com/TFAGaming/Tags-System-Discord-Bot/blob/main/AUTHORS.md).
 
+CHANGING MY NAME (T.F.A#7524) TO ANY OTHER USERNAME IS GOING TO BE AN INSTANT COPYRIGHT STRIKE. BE CAREFUL FROM GETTING A STRIKE FROM ME.
+
 ## The project
 The project is not 100% finished, some features could be add in the future and bugs may occurs anywhere. Please do **not** create an issue saying "It's broken", "not working at all", or other similar comments. Thank you.
 
