@@ -5,18 +5,21 @@ const { TextFileGenerator } = require('super-djs');
 
 client.on('interactionCreate', async (interaction) => {
     if (interaction.isSelectMenu() || interaction.isButton()) {
-        const id = interaction.customId.split('_');
+        if (interaction.customId.includes('CHECKID')) {
 
-        let user = interaction.guild.members.cache.get(id[id.length - 1]);
+            const id = interaction.customId.split('_');
 
-        if (user) {
-            if (interaction.user.id !== user.user.id) return interaction.reply({
-                embeds: [
-                    new EmbedBuilder()
-                        .setDescription(`This ${interaction.isSelectMenu() ? 'select menu' : interaction.isButton() ? 'button' : '[Unknown]'} isn\'t yours.`)
-                ],
-                ephemeral: true
-            });
+            let user = interaction.guild.members.cache.get(id[id.length - 1]);
+
+            if (user) {
+                if (interaction.user.id !== user.user.id) return interaction.reply({
+                    embeds: [
+                        new EmbedBuilder()
+                            .setDescription(`This ${interaction.isSelectMenu() ? 'select menu' : interaction.isButton() ? 'button' : '[Unknown]'} isn\'t yours.`)
+                    ],
+                    ephemeral: true
+                });
+            };
         };
     };
 
