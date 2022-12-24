@@ -18,6 +18,14 @@ A bot that allows you and your server members to create tags and share them to t
 - Detailed informations<br><img src="https://media.discordapp.net/attachments/996343173922168872/1048654110985048174/2022-12-03_18_36_00-Window.png"><img src="https://media.discordapp.net/attachments/996343173922168872/1048654111291220070/2022-12-03_18_36_15-Window.png"><img src="https://media.discordapp.net/attachments/996343173922168872/1048655499027038269/2022-12-03_18_42_23-Window.png">
 
 # Setup
+## Dependencies installation:
+Run the command below in your IDE's shell or terminal to install all the required packages:
+
+```shell
+npm i discord.js@14 discord.js-v14-helper fs mathjs mongoose ms node-fetch@cjs os super-djs
+```
+
+## Start the project:
 The setup for now is for [Visual Studio Code](https://code.visualstudio.com/) users only. If you are a repl.it user and non-beginner programmer, you can read the setup below but you have to edit the Environment processing for MongoDB and the bot token.
 - 1. Install [Visual Studio Code](https://code.visualstudio.com/).
 - 2. Install [node.js](https://nodejs.org/en/download/).
