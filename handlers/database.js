@@ -1,5 +1,6 @@
-const superdjs = require('super-djs');
+const { MongoDBConnector } = require('discord.js-v14-helper');
 
 module.exports = (client) => {
-    superdjs.connectMongoDB(require('../config/handlers').database.uri, true)
+    new MongoDBConnector(require('../config/handlers').database.uri)
+        .startConnecting();
 };
