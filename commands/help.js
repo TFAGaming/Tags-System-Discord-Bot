@@ -17,7 +17,7 @@ module.exports = {
                     .addFields(
                         {
                             name: 'Who am I?',
-                            value: `I'm **${client.user.username}**, a Discord bot made with discord.js. My utility is creating tags about programming, publishing it in-guild with custom visibility (Public, Private, or Unlisted), and for 100% free!`
+                            value: `I'm **${client.user.username}**, a Discord bot made with discord.js. My utility is creating tags about programming, publishing it in-guild with custom visibility (Public or Private), and for 100% free!`
                         },
                         {
                             name: 'Where are all the available commands?',
@@ -33,7 +33,7 @@ module.exports = {
                 new ActionRowBuilder()
                     .addComponents(
                         new ButtonBuilder()
-                            .setURL("https://discord.com/oauth2/authorize?client_id=865657643657461760&scope=bot%20applications.commands&permissions=277025770568")
+                            .setURL(`https://discord.com/oauth2/authorize?client_id=${client.user.id}&scope=bot%20applications.commands&permissions=277025770568`)
                             .setLabel('Invite me!')
                             .setStyle(ButtonStyle.Link)
                             .setDisabled(true) // Not public
